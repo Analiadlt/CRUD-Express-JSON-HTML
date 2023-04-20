@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('partials/header')%>
+  </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-        Ecommerce CRUD
-    </title>
-    <%- include('partials/head')%>
-</head>
-
-<body>
+  <body>
     <%- include('partials/navigation')%>
     <!-- Main Content -->
-    <header class="container ">
-      <div class="d-flex flex-column justify-content-center align-items-center p-4">
-        <img src="/img/gota-de-agua.png" class="my-5" alt="" />
-        <h3 class="display-4 fw-bold">E-commerce</h3>
-        <a href="/about" class="btn btn-primary w-25">About</a>
+    <div class="container p-4">
+      <div class="row">
+        <% products.forEach(function (product) { %>
+        <div class="col-md-4">
+          <div class="card m-2 shadow-lg">
+            <div class="card-header">
+              <!-- <img src="<%= product.image %>" class="card-img-top" alt="" /> -->
+              <div>
+                <img
+                  src="<%= product.image %>"
+                  class="card-img-top"
+                  width="100"
+                  height="305"
+                />
+              </div>
+              <p><%=product.name %></p>
+            </div>
+            <div class="card-body">
+              <p><%=product.description %></p>
+              <p>$<%=product.price %></p>
+            </div>
+            <div class="card-footer">
+              <!-- <button class="btn btn-danger">Delete</button> -->
+              <a href="/updateProduct/<%= product.id %>" class="btn btn-dark">
+                Update
+              </a>
+              <a href="/delete/<%= product.id %>" class="btn btn-danger">
+                Delete
+              </a>
+            </div>
+          </div>
+        </div>
+        <% })%>
       </div>
-    </header>
+    </div>
 
     <%- include('partials/footer')%>
   </body>
