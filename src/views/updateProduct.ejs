@@ -8,7 +8,6 @@
     <div class="container p-4">
       <form method="POST" action="/updateProduct" class="card card-body">
         <% const {id, name, description, price, image } = product[0] %>
-        <!-- <% console.log('SUSSUSU ', product) %> -->
         <div class="form-group">
           <label for="id">ID</label>
           <input type="hidden" class="form-control" name="id" value="<%= id %>" />
